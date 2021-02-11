@@ -9,6 +9,7 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
 function Player({ url }) {
+  const $videoPlayer = useRef(null);
   const {
     playerState,
     toggleVideoPlay,
@@ -16,8 +17,6 @@ function Player({ url }) {
     handleVolumeChange,
     handleVolumeSeekDown,
   } = usePlayerState($videoPlayer);
-
-  const $videoPlayer = useRef(null);
 
   useEffect(() => {
     playerState.playing
