@@ -26,16 +26,18 @@ function Player({ url }) {
 
   return (
     <>
-      <Grid container direction="row" alignItems="center" xs={12}>
-        <ReactPlayer
-          ref={$videoPlayer}
-          url={url}
-          width={"100%"}
-          height={"100%"}
-          playing={playerState.playing}
-          muted={playerState.muted}
-          volume={playerState.volume}
-        />
+      <Grid container direction="row" alignItems="center">
+        <Grid item lg={12} sm={6}>
+          <ReactPlayer
+            ref={$videoPlayer}
+            url={url}
+            width={"100%"}
+            height={"100%"}
+            playing={playerState.playing}
+            muted={playerState.muted}
+            volume={playerState.volume}
+          />
+        </Grid>
       </Grid>
 
       <Grid
@@ -44,7 +46,6 @@ function Player({ url }) {
         justify="space-evenly"
         alignItems="center"
       >
-        <Grid item></Grid>
         <Grid item xs={2}>
           <Button
             variant="contained"
@@ -56,7 +57,7 @@ function Player({ url }) {
           </Button>
         </Grid>
 
-        <Grid item>
+        <Grid item xs>
           <IconButton color="inherit" onClick={toggleMuted}>
             {playerState.muted ? (
               <VolumeOffIcon fontSize="small" />
@@ -68,6 +69,7 @@ function Player({ url }) {
 
         <Grid item xs={7}>
           <Slider
+            aria-label="volume"
             color="secondary"
             onChange={handleVolumeChange}
             onChangeCommitted={handleVolumeSeekDown}
